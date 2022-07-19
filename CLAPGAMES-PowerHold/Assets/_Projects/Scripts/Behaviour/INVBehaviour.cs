@@ -12,6 +12,7 @@ public class INVBehaviour : MonoBehaviour
     
     [Space]
     [Header("Reference")] [SerializeField] private Attack attack;
+    [SerializeField] private Sword sword;
     
     [Header("Components")] [Space] private CapsuleCollider _capsuleCollider;
     public Animator animator;
@@ -21,7 +22,7 @@ public class INVBehaviour : MonoBehaviour
     public float playerSpeed;
     public float sensitivity;
     [SerializeField] private float boundX;
-    [SerializeField] private bool isPressing = false;
+    public bool isPressing = false;
     private float _screenWidthMultiplier;
     [SerializeField] private float rotateDuration;
     public bool canAttack = false;
@@ -43,7 +44,6 @@ public class INVBehaviour : MonoBehaviour
     private void SubscribeEvents()
     {
         INVEvents.OnStart += OnStart;
-        INVEvents.OnInteractWithEnemy += OnInteractWithEnemy;
         INVEvents.OnJump += OnJump;
         INVEvents.OnHold += OnHold;
         INVEvents.OnRelease += OnRelease;
@@ -153,6 +153,16 @@ public class INVBehaviour : MonoBehaviour
         canAttack = true;
     }
 
+    public void EnableSwordCollider()
+    {
+        sword.boxCollider.enabled = true;
+    }
+
+    public void DisableSwordCollider()
+    {
+        sword.boxCollider.enabled = false;
+    }
+    
     public void SetPlayerLevel2Start()
     {
         text_level.text = $"LEVEL  " + playerSettings.playerLevel;

@@ -19,8 +19,9 @@ public class INVEvents : MonoBehaviour
         OnFail,
         OnHold,
         OnRelease,
-        OnJump,
-        OnInteractWithEnemy;
+        OnJump;
+    
+    public static event Action<Collider> OnInteractWithEnemy; 
 
     private void Awake()
     {
@@ -80,9 +81,9 @@ public class INVEvents : MonoBehaviour
         OnJump?.Invoke();
     }
 
-    public void OnPlayerInteractWithEnemy()
+    public void OnPlayerInteractWithEnemy(Collider collider)
     {
-        OnInteractWithEnemy?.Invoke();
+        OnInteractWithEnemy?.Invoke(collider);
     }
 }
 

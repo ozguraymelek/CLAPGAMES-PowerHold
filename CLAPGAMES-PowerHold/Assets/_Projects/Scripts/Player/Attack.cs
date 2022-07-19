@@ -21,6 +21,5 @@ public class Attack : MonoBehaviour
     public void PlayerAttack()
     {
         invBehaviour.animator.SetTrigger("Attack1");
-        
     }
 }

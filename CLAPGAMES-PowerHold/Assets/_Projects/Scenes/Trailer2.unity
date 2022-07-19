@@ -10762,6 +10762,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de401672b30baf243b67f648bda924ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boxCollider: {fileID: 919132149048885587}
+  interacted: 0
 --- !u!65 &919132149048885587
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10771,7 +10773,7 @@ BoxCollider:
   m_GameObject: {fileID: 919132149048885585}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.14014126, y: 0.8563624, z: 0.036887754}
   m_Center: {x: 0.0030681535, y: -0.6446607, z: -0.003082701}
@@ -12767,6 +12769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSettings: {fileID: 11400000, guid: c077de01d64ce3a4882c7045a85b2580, type: 2}
   attack: {fileID: 7218138800728284961}
+  sword: {fileID: 919132149048885586}
   animator: {fileID: 7218138800728284957}
   text_level: {fileID: 1362726299}
   playerSpeed: 0

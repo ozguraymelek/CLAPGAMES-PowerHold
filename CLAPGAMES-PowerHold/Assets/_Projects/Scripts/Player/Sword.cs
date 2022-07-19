@@ -3,14 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sword : MonoBehaviour,ISword
+public class Sword : MonoBehaviour, IInteractible
 {
+    [Header("Components")]
+    public BoxCollider boxCollider;
+    
     [Header("Settings")] public bool interacted = false;
-    private void OnTriggerEnter(Collider other)
+
+    private void Start()
     {
-        OnEnter(other);
+        SubscribeEvents();
     }
 
+    private void SubscribeEvents()
+    {
+        INVEvents.OnInteractWithEnemy += OnInteractWithEnemy;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        FindObjectOfType<INVEvents>().OnPlayerInteractWithEnemy(other);
+    }
+
+    public void OnInteractWithEnemy(Collider collider)
+    {
+        OnEnter(collider);
+    }
+
+    #region Implement
+    
     public void OnEnter(Collider collider)
     {
         if (interacted == true) return;
@@ -31,4 +51,7 @@ public class Sword : MonoBehaviour,ISword
     {
         
     }
+    
+    #endregion
+    
 }
