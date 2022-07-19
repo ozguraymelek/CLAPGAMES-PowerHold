@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class INVBehaviour : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class INVBehaviour : MonoBehaviour
     [SerializeField] private float boundX;
     [SerializeField] private bool isPressing = false;
     private float _screenWidthMultiplier;
+    [SerializeField] private float rotateDuration;
 
     private void Awake()
     {
@@ -112,6 +114,11 @@ public class INVBehaviour : MonoBehaviour
         
         if (thisTransform.position.x > boundX)
             thisTransform.position = new Vector3(boundX, thisTransform.position.y, thisTransform.position.z);
+    }
+
+    public void PlayerTurnToForwardAxis()
+    {
+        transform.root.DORotate(Vector3.zero, rotateDuration);
     }
 
     #endregion
