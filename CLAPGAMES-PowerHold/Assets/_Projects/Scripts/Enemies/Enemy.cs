@@ -22,9 +22,9 @@ public class Enemy : MonoBehaviour, IEnemy
     [SerializeField] private int enemyLevel;
 
     [Header("Enemy Level Settings")] 
-    [SerializeField] private int type1_Level;
-    [SerializeField] private int type2_Level;
-    [SerializeField] private int type3_Level;
+    public int type1_Level;
+    public int type2_Level;
+    public int type3_Level;
 
     private void Start()
     {
@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour, IEnemy
         _textLevel = activeEnemy.GetComponentInChildren<TMP_Text>();
     }
     
-    private EnemyType SetActiveEnemy()
+    public EnemyType SetActiveEnemy()
     {
         if (transform.GetChild(0).gameObject.activeInHierarchy)
         {

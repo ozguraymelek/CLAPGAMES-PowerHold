@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour, IInteractible
 {
+    [Header("Scriptable Objects Reference")] [SerializeField]
+    private PlayerSettings playerSettings;
+
+    [Header("References")] [SerializeField]
+    private INVBehaviour invBehaviour;
+    
     [Header("Components")]
     public BoxCollider boxCollider;
     
@@ -29,6 +35,7 @@ public class Sword : MonoBehaviour, IInteractible
         OnEnter(collider);
     }
 
+    
     #region Implement
     
     public void OnEnter(Collider collider)
@@ -38,6 +45,7 @@ public class Sword : MonoBehaviour, IInteractible
         if (collider.GetComponent<IEnemy>() != null)
         {
             print("Enemy!");
+            invBehaviour.ExploitEnemyLevel(collider.GetComponent<Enemy>());
             interacted = true;
         }
     }

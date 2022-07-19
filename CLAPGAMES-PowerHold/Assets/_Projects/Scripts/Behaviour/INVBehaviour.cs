@@ -17,6 +17,7 @@ public class INVBehaviour : MonoBehaviour
     [Header("Components")] [Space] private CapsuleCollider _capsuleCollider;
     public Animator animator;
     [SerializeField] private TMP_Text text_level;
+    [SerializeField] private TMP_Text text_PopUp;
     
     [Header("Settings")] [Space]
     public float playerSpeed;
@@ -117,6 +118,8 @@ public class INVBehaviour : MonoBehaviour
     private void MoveForward()
     {
         text_level.transform.rotation = Quaternion.Euler(0f,-transform.rotation.y,0f);
+        text_PopUp.transform.rotation = Quaternion.Euler(0f, -transform.rotation.y, 0f);
+        
         transform.position += Vector3.forward * Time.deltaTime * playerSpeed;
     }
 
@@ -153,6 +156,8 @@ public class INVBehaviour : MonoBehaviour
         canAttack = true;
     }
 
+    #region Animation Events - [Sword Turn 1]
+    
     public void EnableSwordCollider()
     {
         sword.boxCollider.enabled = true;
@@ -163,14 +168,71 @@ public class INVBehaviour : MonoBehaviour
         sword.boxCollider.enabled = false;
     }
     
+    #endregion
+    
+    
     public void SetPlayerLevel2Start()
     {
         text_level.text = $"LEVEL  " + playerSettings.playerLevel;
     }
 
-    public void SetPlayerLevel(EnemyType enemyType)
+    public void ExploitEnemyLevel(Enemy enemy)
     {
+        switch (enemy.SetActiveEnemy())
+        {
+            case EnemyType.Type1:
+                Text_PopUp(enemy);
+                playerSettings.playerLevel += enemy.type1_Level;
+                text_level.text = $"LEVEL  " + playerSettings.playerLevel;
+                break;
+            case EnemyType.Type2:
+                Text_PopUp(enemy);
+                playerSettings.playerLevel += enemy.type2_Level;
+                text_level.text = $"LEVEL  " + playerSettings.playerLevel;
+                break;
+            case EnemyType.Type3:
+                Text_PopUp(enemy);
+                playerSettings.playerLevel += enemy.type3_Level;
+                text_level.text = $"LEVEL  " + playerSettings.playerLevel;
+                break;
+        }
+    }
+    #endregion
+
+    #region Pop Ups
+
+    public void Text_PopUp(Enemy enemy)
+    {
+        switch (enemy.SetActiveEnemy())
+        {
+            case EnemyType.Type1:
+                text_PopUp.text = $"+" + enemy.type1_Level;
+                break;
+            case EnemyType.Type2:
+                text_PopUp.text = $"+" + enemy.type2_Level;
+                break;
+            case EnemyType.Type3:
+                text_PopUp.text = $"+" + enemy.type3_Level;
+                break;
+        }
+
+        text_PopUp.transform.DOScale(Vector3.one, 1.5f).OnComplete(() =>
+        {
+            text_PopUp.transform.DOLocalMoveY(.9f, 1f);
+            
+            text_PopUp.transform.DOPunchScale(Vector3.one*.5f, 1f).OnComplete(() =>
+            {
+                text_PopUp.DOColor(Color.green, .3f).OnComplete(() =>
+                {
+                    text_PopUp.text = null;
+                    text_PopUp.transform.localScale = Vector3.zero;
+                });
+            });
+        });
+        
         
     }
+    
+
     #endregion
 }
