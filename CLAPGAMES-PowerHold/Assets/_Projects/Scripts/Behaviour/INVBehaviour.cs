@@ -161,6 +161,7 @@ public class INVBehaviour : MonoBehaviour
     public void EnableSwordCollider()
     {
         sword.boxCollider.enabled = true;
+        sword.interacted = false;
     }
 
     public void DisableSwordCollider()

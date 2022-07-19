@@ -30,6 +30,11 @@ public class Sword : MonoBehaviour, IInteractible
         FindObjectOfType<INVEvents>().OnPlayerInteractWithEnemy(other);
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        
+    }
+
     public void OnInteractWithEnemy(Collider collider)
     {
         OnEnter(collider);
