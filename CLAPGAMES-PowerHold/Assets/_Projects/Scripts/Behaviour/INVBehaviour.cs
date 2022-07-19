@@ -7,6 +7,7 @@ using DG.Tweening;
 public class INVBehaviour : MonoBehaviour
 {
     [Header("Components")] [Space] private CapsuleCollider _capsuleCollider;
+    public Animator animator;
     
     [Header("Settings")] [Space]
     public float playerSpeed;
@@ -16,10 +17,10 @@ public class INVBehaviour : MonoBehaviour
     private float _screenWidthMultiplier;
     [SerializeField] private float rotateDuration;
 
-    private void Awake()
+    private void Start()
     {
-        GetComponents();
         SubscribeEvents();
+        GetComponents();
 
         _screenWidthMultiplier = 1.0f / Screen.width;
     }
@@ -44,17 +45,18 @@ public class INVBehaviour : MonoBehaviour
 
     private void OnPointerRemoved(Vector3 obj)
     {
-        
+        isPressing = false;
     }
 
     private void OnPointerPressed(Vector3 obj)
     {
-        
+        isPressing = true;
+        OnHold();
     }
 
     private void OnPointerMoved(Vector3 mouseMovementDirection)
     {
-        BasicMoveX(mouseMovementDirection);
+        
     }
 
     private void OnRelease()
@@ -64,7 +66,7 @@ public class INVBehaviour : MonoBehaviour
 
     private void OnHold()
     {
-        
+        animator.SetTrigger("Attack1");
     }
 
     private void OnJump()
@@ -118,7 +120,11 @@ public class INVBehaviour : MonoBehaviour
 
     public void PlayerTurnToForwardAxis()
     {
-        transform.root.DORotate(Vector3.zero, rotateDuration);
+        transform.root.DORotate(Vector3.zero, rotateDuration).OnComplete(() =>
+        {
+            playerSpeed = 5;
+            animator.SetBool("IsStarted", true);
+        });
     }
 
     #endregion

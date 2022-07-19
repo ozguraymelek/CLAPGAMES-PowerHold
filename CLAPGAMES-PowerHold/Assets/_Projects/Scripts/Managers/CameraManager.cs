@@ -95,14 +95,12 @@ public class CameraManager : Singleton<CameraManager>
         activeCam.LookAt = null;
         activeCam.Priority = 0;
         
-        invBehaviour.playerSpeed = 0;
+        // invBehaviour.playerSpeed = 0;
         invBehaviour.PlayerTurnToForwardAxis();
         yield return new WaitForSeconds(changeFirstCamera2GameCameraDelayTime);
         
         activeCam = virtualCamera;
         activeCam.Priority = 10;
-        
-        invBehaviour.playerSpeed = 5;
         
     }
 }

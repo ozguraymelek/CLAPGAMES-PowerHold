@@ -1,11 +1,14 @@
 fileFormatVersion: 2
-guid: dc475a3bdc9b67049a752580c2aa6caa
+guid: 5b490bdc645c8504c83340fc417fbf51
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: SwordTurn1
+    second: Take 001
+  - first:
+      74: -203655887218126122
+    second: Idle
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -20,16 +23,14 @@ ModelImporter:
     removeConstantScaleCurves: 1
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Inbetween bone
-      rotation in copied configuration does not match rotation in animation file:\n\t'Base
-      HumanRibcage' : rotation error = 5.172144 deg\n\t'Base HumanNeck' : rotation
-      error = 2.212038 deg\n"
+    rigImportWarnings: "Avatar Rig Configuration mis-match. Inbetween bone rotation
+      in configuration does not match rotation in animation file:\n\t'Base HumanRibcage'
+      : rotation error = 8.930363 deg\n"
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+    animationImportWarnings: "\nClip 'mixamo.com' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
       to improve retargeting quality.\n\t'Base HumanRibcage' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'Base HumanNeck'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
+      transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -43,18 +44,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: SwordTurn1
-      takeName: Take 001
+      name: Idle
+      takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 52
+      lastFrame: 227
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
@@ -666,12 +667,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 5b490bdc645c8504c83340fc417fbf51,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 2
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
