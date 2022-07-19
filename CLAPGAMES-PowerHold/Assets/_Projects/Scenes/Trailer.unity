@@ -11310,6 +11310,7 @@ GameObject:
   - component: {fileID: 3660254599952090471}
   - component: {fileID: 7218138800728284957}
   - component: {fileID: 7218138800728284958}
+  - component: {fileID: 7218138800728284961}
   - component: {fileID: 7218138800728284959}
   - component: {fileID: 7218138800728284960}
   m_Layer: 0
@@ -12119,6 +12120,7 @@ MonoBehaviour:
   boundX: 2
   isPressing: 0
   rotateDuration: 1
+  canAttack: 0
 --- !u!136 &7218138800728284959
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12127,7 +12129,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4143318833720074205}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.20611747
   m_Height: 1.5742015
@@ -12147,8 +12149,23 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &7218138800728284961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4143318833720074205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fec6794ca261a349a0fc17168eb76f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invBehaviour: {fileID: 7218138800728284958}
+  attackRate: 3
+  timer: 0
 --- !u!4 &7245398605262671977
 Transform:
   m_ObjectHideFlags: 0

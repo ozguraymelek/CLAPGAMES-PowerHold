@@ -16,6 +16,7 @@ public class INVBehaviour : MonoBehaviour
     [SerializeField] private bool isPressing = false;
     private float _screenWidthMultiplier;
     [SerializeField] private float rotateDuration;
+    public bool canAttack = false;
 
     private void Start()
     {
@@ -66,7 +67,10 @@ public class INVBehaviour : MonoBehaviour
 
     private void OnHold()
     {
-        animator.SetTrigger("Attack1");
+        if (canAttack)
+        {
+            
+        }
     }
 
     private void OnJump()
@@ -124,8 +128,14 @@ public class INVBehaviour : MonoBehaviour
         {
             playerSpeed = 5;
             animator.SetBool("IsStarted", true);
+            StartCoroutine(AttackRate());
         });
     }
 
+    private IEnumerator AttackRate()
+    {
+        yield return new WaitForSeconds(1f);
+        canAttack = true;
+    }
     #endregion
 }
