@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Hair
-  m_Shader: {fileID: -6465566751694194690, guid: 4f5de95af1a27dd47841e754ee97ecce, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 4f5de95af1a27dd47841e754ee97ecce,
+    type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
@@ -37,7 +38,7 @@ Material:
     - Vector1_2764E69A: 0
     - Vector1_6A6BB4AB: 0.529
     - Vector1_8B81BC67: 0
-    - Vector1_F0E8D0E6: -0.51
+    - Vector1_F0E8D0E6: -1.06
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
