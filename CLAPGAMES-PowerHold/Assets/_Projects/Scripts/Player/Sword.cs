@@ -23,11 +23,11 @@ public class Sword : MonoBehaviour, IInteractible
 
     private void SubscribeEvents()
     {
-        INVEvents.OnInteractWithEnemy += OnInteractWithEnemy;
+        INVEvents.OnSwordInteract += OnSwordInteractWithEnemy;
     }
     private void OnTriggerEnter(Collider other)
     {
-        FindObjectOfType<INVEvents>().OnPlayerInteractWithEnemy(other);
+        FindObjectOfType<INVEvents>().OnSwordInteractWithEnemy(other);
     }
 
     private void OnTriggerExit(Collider other)
@@ -35,7 +35,7 @@ public class Sword : MonoBehaviour, IInteractible
         
     }
 
-    public void OnInteractWithEnemy(Collider collider)
+    public void OnSwordInteractWithEnemy(Collider collider)
     {
         OnEnter(collider);
     }

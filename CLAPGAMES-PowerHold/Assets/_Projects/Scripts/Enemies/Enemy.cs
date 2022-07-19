@@ -11,15 +11,20 @@ public enum EnemyType
     Type3 = 3
 }
 
-public class Enemy : MonoBehaviour, IEnemy
+public class Enemy : MonoBehaviour, IEnemy,IInteractible
 {
+    [Header("Scriptable Objects Reference")] [SerializeField]
+    private PlayerSettings playerSettings;
+    
     [Header("Reference")] [Space] [SerializeField]
     private EnemyType enemyType;
+    [SerializeField] private INVBehaviour invBehaviour;
 
     [Header("Components")] private TMP_Text _textLevel;
     
     [Header("Settings")] [Space] public GameObject activeEnemy;
     [SerializeField] private int enemyLevel;
+    public bool interacted = false;
 
     [Header("Enemy Level Settings")] 
     public int type1_Level;
@@ -28,6 +33,7 @@ public class Enemy : MonoBehaviour, IEnemy
 
     private void Start()
     {
+        SubscribeEvents();
         SetActiveEnemy();
         GetComponents();
         EnemyLevel(enemyType);
@@ -37,7 +43,11 @@ public class Enemy : MonoBehaviour, IEnemy
     {
         _textLevel = activeEnemy.GetComponentInChildren<TMP_Text>();
     }
-    
+    private void SubscribeEvents()
+    {
+        INVEvents.OnPlayerInteract += OnPlayerInteractWithEnemy;
+    }
+
     public EnemyType SetActiveEnemy()
     {
         if (transform.GetChild(0).gameObject.activeInHierarchy)
@@ -91,5 +101,55 @@ public class Enemy : MonoBehaviour, IEnemy
                 break;
         }
     }
+
+    public void ExploitPlayerLevel()
+    {
+        switch (SetActiveEnemy())
+        {
+            case EnemyType.Type1:
+                playerSettings.playerLevel -= type1_Level;
+                invBehaviour.text_level.text = $"LEVEL  " + playerSettings.playerLevel;
+                break;
+            case EnemyType.Type2:
+                playerSettings.playerLevel -= type2_Level;
+                invBehaviour.text_level.text = $"LEVEL  " + playerSettings.playerLevel;
+                break;
+            case EnemyType.Type3:
+                playerSettings.playerLevel -= type3_Level;
+                invBehaviour.text_level.text = $"LEVEL  " + playerSettings.playerLevel;
+                break;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        FindObjectOfType<INVEvents>().OnPlayerInteractWithEnemy(other);
+    }
+
+    private void OnPlayerInteractWithEnemy(Collider collider)
+    {
+        OnEnter(collider);
+    }
     
+    public void OnEnter(Collider collider)
+    {
+        if (interacted == true) return;
+        
+        if (collider.GetComponent<INVBehaviour>() != null)
+        {
+            print("Player !");
+            ExploitPlayerLevel();
+            interacted = true;
+        }
+    }
+
+    public void OnStay()
+    {
+        
+    }
+
+    public void OnExit()
+    {
+        
+    }
 }

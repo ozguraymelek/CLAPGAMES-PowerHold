@@ -21,7 +21,7 @@ public class INVEvents : MonoBehaviour
         OnRelease,
         OnJump;
     
-    public static event Action<Collider> OnInteractWithEnemy; 
+    public static event Action<Collider> OnSwordInteract, OnPlayerInteract; 
 
     private void Awake()
     {
@@ -38,7 +38,8 @@ public class INVEvents : MonoBehaviour
         OnHold = null;
         OnRelease = null;
         OnJump = null;
-        OnInteractWithEnemy = null;
+        OnSwordInteract = null;
+        OnPlayerInteract = null;
     }
 
     public void OnStartButtonClicked()
@@ -81,9 +82,14 @@ public class INVEvents : MonoBehaviour
         OnJump?.Invoke();
     }
 
+    public void OnSwordInteractWithEnemy(Collider collider)
+    {
+        OnSwordInteract?.Invoke(collider);
+    }
+
     public void OnPlayerInteractWithEnemy(Collider collider)
     {
-        OnInteractWithEnemy?.Invoke(collider);
+        OnPlayerInteract?.Invoke(collider);
     }
 }
 

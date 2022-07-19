@@ -16,8 +16,8 @@ public class INVBehaviour : MonoBehaviour
     
     [Header("Components")] [Space] private CapsuleCollider _capsuleCollider;
     public Animator animator;
-    [SerializeField] private TMP_Text text_level;
-    [SerializeField] private TMP_Text text_PopUp;
+    public TMP_Text text_level;
+    public TMP_Text text_PopUp;
     
     [Header("Settings")] [Space]
     public float playerSpeed;
