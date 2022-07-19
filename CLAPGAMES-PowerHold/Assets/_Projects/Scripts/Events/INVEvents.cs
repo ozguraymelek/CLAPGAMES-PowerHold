@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class INVEvents : MonoBehaviour
@@ -52,6 +53,36 @@ public class INVEvents : MonoBehaviour
     private void FixedUpdate()
     {
         OnFixedUpdate?.Invoke();
+    }
+
+    public void OnPlayerSuccess()
+    {
+        OnSuccess?.Invoke();
+    }
+
+    public void OnPlayerFail()
+    {
+        OnFail?.Invoke();
+    }
+
+    public void OnPlayerHold()
+    {
+        OnHold?.Invoke();
+    }
+
+    public void OnPlayerRelease()
+    {
+        OnRelease?.Invoke();
+    }
+
+    public void OnPlayerJump()
+    {
+        OnJump?.Invoke();
+    }
+
+    public void OnPlayerInteractWithEnemy()
+    {
+        OnInteractWithEnemy?.Invoke();
     }
 }
 
