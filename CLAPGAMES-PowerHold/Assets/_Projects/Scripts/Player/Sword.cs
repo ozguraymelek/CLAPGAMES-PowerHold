@@ -5,14 +5,21 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour,ISword
 {
+    [Header("Settings")] public bool interacted = false;
     private void OnTriggerEnter(Collider other)
     {
-        OnEnter();
+        OnEnter(other);
     }
 
-    public void OnEnter()
+    public void OnEnter(Collider collider)
     {
+        if (interacted == true) return;
         
+        if (collider.GetComponent<IEnemy>() != null)
+        {
+            print("Enemy!");
+            interacted = true;
+        }
     }
 
     public void OnStay()

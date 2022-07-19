@@ -3,13 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class INVBehaviour : MonoBehaviour
 {
+    [Header("Scriptable Objects Reference")] [SerializeField]
+    private PlayerSettings playerSettings;
+    
+    [Space]
     [Header("Reference")] [SerializeField] private Attack attack;
     
     [Header("Components")] [Space] private CapsuleCollider _capsuleCollider;
     public Animator animator;
+    [SerializeField] private TMP_Text text_level;
     
     [Header("Settings")] [Space]
     public float playerSpeed;
@@ -22,6 +28,7 @@ public class INVBehaviour : MonoBehaviour
 
     private void Start()
     {
+        SetPlayerLevel2Start();
         SubscribeEvents();
         GetComponents();
 
@@ -109,6 +116,7 @@ public class INVBehaviour : MonoBehaviour
 
     private void MoveForward()
     {
+        text_level.transform.rotation = Quaternion.Euler(0f,-transform.rotation.y,0f);
         transform.position += Vector3.forward * Time.deltaTime * playerSpeed;
     }
 
@@ -132,6 +140,7 @@ public class INVBehaviour : MonoBehaviour
     {
         transform.root.DORotate(Vector3.zero, rotateDuration).OnComplete(() =>
         {
+            // text_level.transform.rotation = Quaternion.Euler(0f,-transform.rotation.y,0f);
             playerSpeed = 5;
             animator.SetBool("IsStarted", true);
             StartCoroutine(AttackRate());
@@ -142,6 +151,16 @@ public class INVBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         canAttack = true;
+    }
+
+    public void SetPlayerLevel2Start()
+    {
+        text_level.text = $"LEVEL  " + playerSettings.playerLevel;
+    }
+
+    public void SetPlayerLevel(EnemyType enemyType)
+    {
+        
     }
     #endregion
 }

@@ -9,7 +9,7 @@ public interface IEnemy
 
 public interface ISword
 {
-    void OnEnter();
+    void OnEnter(Collider collider);
     void OnStay();
     void OnExit();
 }
