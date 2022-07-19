@@ -9,21 +9,16 @@ public class Attack : MonoBehaviour
     private INVBehaviour invBehaviour;
 
     [Header("Settings")] 
-    [SerializeField] private float attackRate;
-    [SerializeField] private float timer;
+    public float timer;
+    public float attackRate;
 
     private void Update()
     {
         timer += Time.deltaTime;
-
-        if (timer >= attackRate)
-        {
-            PlayerAttack();
-            timer = 0;
-        }
+        
     }
 
-    private void PlayerAttack()
+    public void PlayerAttack()
     {
         invBehaviour.animator.SetTrigger("Attack1");
         

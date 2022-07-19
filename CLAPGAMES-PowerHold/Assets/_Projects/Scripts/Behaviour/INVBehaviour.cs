@@ -6,6 +6,8 @@ using DG.Tweening;
 
 public class INVBehaviour : MonoBehaviour
 {
+    [Header("Reference")] [SerializeField] private Attack attack;
+    
     [Header("Components")] [Space] private CapsuleCollider _capsuleCollider;
     public Animator animator;
     
@@ -69,7 +71,11 @@ public class INVBehaviour : MonoBehaviour
     {
         if (canAttack)
         {
-            
+            if (attack.timer >= attack.attackRate)
+            {
+                attack.PlayerAttack();
+                attack.timer = 0;
+            }
         }
     }
 
