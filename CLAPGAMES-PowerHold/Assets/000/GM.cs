@@ -32,5 +32,7 @@ public class GM : Singleton<GM>
 
       Plane plane = new Plane(Vector3.right, 0f);
       sliceable.Slice(plane,null);
+      print(sliceable.name);
+      sliceable.GetComponent<Rigidbody>().isKinematic = false;
    }
 }
