@@ -10,6 +10,6 @@ public interface IEnemy
 public interface IInteractible
 {
     void OnEnter(Collider collider);
-    void OnStay();
-    void OnExit();
+    void OnStay(Collider collider);
+    void OnExit(Collider collider);
 }

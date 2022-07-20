@@ -107,33 +107,37 @@ public class Enemy : MonoBehaviour, IEnemy,IInteractible
         switch (SetActiveEnemy())
         {
             case EnemyType.Type1:
+                invBehaviour.Text_PopUp_Minus(this);
                 playerSettings.playerLevel -= type1_Level;
                 invBehaviour.text_level.text = $"LEVEL  " + playerSettings.playerLevel;
                 break;
             case EnemyType.Type2:
+                invBehaviour.Text_PopUp_Minus(this);
                 playerSettings.playerLevel -= type2_Level;
                 invBehaviour.text_level.text = $"LEVEL  " + playerSettings.playerLevel;
                 break;
             case EnemyType.Type3:
+                invBehaviour.Text_PopUp_Minus(this);
                 playerSettings.playerLevel -= type3_Level;
                 invBehaviour.text_level.text = $"LEVEL  " + playerSettings.playerLevel;
                 break;
         }
     }
 
-    public void Pushback()
-    {
-        
-    }
-
-    public void Pushup()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {
         OnPlayerInteractWithEnemy(other);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        OnStay(other);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // OnExit(other);
     }
 
     private void OnPlayerInteractWithEnemy(Collider collider)
@@ -143,24 +147,31 @@ public class Enemy : MonoBehaviour, IEnemy,IInteractible
     
     public void OnEnter(Collider other)
     {
-        
-        if (interacted == true) return;
         if (other.GetComponentInChildren<Sword>().interacted == true) return;
         
         if (other.GetComponent<INVBehaviour>() != null)
         {
             print("Player !");
+
             ExploitPlayerLevel();
+            invBehaviour.InteractWithEnemy();
             interacted = true;
         }
     }
 
-    public void OnStay()
+    public void OnStay(Collider other)
     {
-        
+        if (other.GetComponent<INVBehaviour>() != null)
+        {
+            if (playerSettings.playerLevel < 1)
+            {
+                //Player Dead
+                FindObjectOfType<INVEvents>().OnPlayerFail();
+            }
+        }
     }
 
-    public void OnExit()
+    public void OnExit(Collider other)
     {
         
     }

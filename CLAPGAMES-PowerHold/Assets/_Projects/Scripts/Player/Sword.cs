@@ -46,7 +46,7 @@ public class Sword : MonoBehaviour, IInteractible
     public void OnEnter(Collider collider)
     {
         if (interacted == true) return;
-        
+
         if (collider.GetComponent<IEnemy>() != null)
         {
             print("Enemy!");
@@ -55,12 +55,12 @@ public class Sword : MonoBehaviour, IInteractible
         }
     }
 
-    public void OnStay()
+    public void OnStay(Collider other)
     {
         
     }
 
-    public void OnExit()
+    public void OnExit(Collider collider)
     {
         
     }

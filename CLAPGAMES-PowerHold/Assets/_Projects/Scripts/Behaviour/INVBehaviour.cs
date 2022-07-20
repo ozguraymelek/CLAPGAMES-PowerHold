@@ -18,6 +18,7 @@ public class INVBehaviour : MonoBehaviour
     public Animator animator;
     public TMP_Text text_level;
     public TMP_Text text_PopUp;
+    public GameObject playerCanvas;
     
     [Header("Settings")] [Space]
     public float playerSpeed;
@@ -28,6 +29,11 @@ public class INVBehaviour : MonoBehaviour
     [SerializeField] private float rotateDuration;
     public bool canAttack = false;
 
+    [Header("Settings Interaction")] public float speedDecreaseFactor;
+    public float speedIncreaseFactor;
+
+    [Header("Lists")] [SerializeField] private List<Enemy> enemies=new List<Enemy>();
+    
     private void Start()
     {
         SetPlayerLevel2Start();
@@ -48,7 +54,7 @@ public class INVBehaviour : MonoBehaviour
         INVEvents.OnJump += OnJump;
         INVEvents.OnHold += OnHold;
         INVEvents.OnRelease += OnRelease;
-
+        
         INVInputs.PointerMoved += OnPointerMoved;
         INVInputs.PointerPressed += OnPointerPressed;
         INVInputs.PointerRemoved += OnPointerRemoved;
@@ -161,16 +167,16 @@ public class INVBehaviour : MonoBehaviour
     public void EnableSwordCollider()
     {
         sword.boxCollider.enabled = true;
-        sword.interacted = false;
     }
 
     public void DisableSwordCollider()
     {
         sword.boxCollider.enabled = false;
+        
+        sword.interacted = false;
     }
     
     #endregion
-    
     
     public void SetPlayerLevel2Start()
     {
@@ -182,17 +188,17 @@ public class INVBehaviour : MonoBehaviour
         switch (enemy.SetActiveEnemy())
         {
             case EnemyType.Type1:
-                Text_PopUp(enemy);
+                Text_PopUp_Plus(enemy);
                 playerSettings.playerLevel += enemy.type1_Level;
                 text_level.text = $"LEVEL  " + playerSettings.playerLevel;
                 break;
             case EnemyType.Type2:
-                Text_PopUp(enemy);
+                Text_PopUp_Plus(enemy);
                 playerSettings.playerLevel += enemy.type2_Level;
                 text_level.text = $"LEVEL  " + playerSettings.playerLevel;
                 break;
             case EnemyType.Type3:
-                Text_PopUp(enemy);
+                Text_PopUp_Plus(enemy);
                 playerSettings.playerLevel += enemy.type3_Level;
                 text_level.text = $"LEVEL  " + playerSettings.playerLevel;
                 break;
@@ -202,7 +208,7 @@ public class INVBehaviour : MonoBehaviour
 
     #region Pop Ups
 
-    public void Text_PopUp(Enemy enemy)
+    public void Text_PopUp_Plus(Enemy enemy)
     {
         switch (enemy.SetActiveEnemy())
         {
@@ -226,14 +232,138 @@ public class INVBehaviour : MonoBehaviour
                 text_PopUp.DOColor(Color.green, .3f).OnComplete(() =>
                 {
                     text_PopUp.text = null;
+                    
+                    text_PopUp.transform.localPosition = new Vector3(0f, .5f, 0f);
                     text_PopUp.transform.localScale = Vector3.zero;
+
+                    text_PopUp.color = Color.white;
+
                 });
             });
         });
-        
-        
     }
     
+    public void Text_PopUp_Minus(Enemy enemy)
+    {
+        switch (enemy.SetActiveEnemy())
+        {
+            case EnemyType.Type1:
+                text_PopUp.text = $"-" + enemy.type1_Level;
+                break;
+            case EnemyType.Type2:
+                text_PopUp.text = $"-" + enemy.type2_Level;
+                break;
+            case EnemyType.Type3:
+                text_PopUp.text = $"-" + enemy.type3_Level;
+                break;
+        }
 
+        text_PopUp.transform.DOScale(Vector3.one, .5f).OnComplete(() =>
+        {
+            text_PopUp.transform.DOLocalMoveY(.9f, .5f);
+            
+            text_PopUp.transform.DOPunchScale(Vector3.one*.5f, 1f).OnComplete(() =>
+            {
+                text_PopUp.DOColor(Color.red, .3f).OnComplete(() =>
+                {
+                    text_PopUp.text = null;
+                    
+                    text_PopUp.transform.localPosition = new Vector3(0f, .5f, 0f);
+                    text_PopUp.transform.localScale = Vector3.zero;
+                    
+                    text_PopUp.color = Color.white;
+                });
+            });
+        });
+    }
+    
+    #endregion
+
+    #region Interact With Enemy
+
+    public void InteractWithEnemy()
+    {
+        float _initSpeed = playerSpeed;
+
+        StartCoroutine(Pushback(_initSpeed));
+    }
+    
+    IEnumerator Pushback(float _initSpeed)
+    {
+        bool a = true;
+        
+        sword.interacted = true;
+        
+        animator.SetTrigger("Hitted");
+        
+        while (a == true)
+        {
+            playerSpeed -= Time.deltaTime * speedDecreaseFactor;
+
+            if (playerSpeed <= -_initSpeed)
+            {
+                StartCoroutine(Pushup(_initSpeed));
+
+                sword.interacted = false;
+                a = false;
+            }
+
+            yield return null;
+        }
+    }
+
+    IEnumerator Pushup(float _initSpeed)
+    {
+        bool a = true;
+
+        while (a == true)
+        {
+            playerSpeed += Time.deltaTime * speedIncreaseFactor;
+
+            if (playerSpeed >= _initSpeed)
+            {
+                playerSpeed = _initSpeed;
+                a = false;
+            }
+
+            yield return null;
+        }
+    }
+
+    #endregion
+
+    #region Player Die
+
+    public void DisablePlayerCollider()
+    {
+        _capsuleCollider.enabled = false;
+    }
+
+    public void DisableJSwordCollider()
+    {
+        sword.boxCollider.enabled = false;
+    }
+
+    public void UnsubscribeMoveForward()
+    {
+        INVEvents.OnUpdate -= MoveForward;
+    }
+
+    public void SetPlayer()
+    {
+        animator.SetTrigger("Die");
+        playerSettings.playerLevel = 1;
+        text_level.text = $"LEVEL " + playerSettings.playerLevel;
+    }
+
+    public void DeactivateAllWorldSpaceCanvas()
+    {
+        playerCanvas.SetActive(false);
+
+        foreach (var enemy in enemies)
+        {
+            enemy.activeEnemy.GetComponentInChildren<Canvas>().gameObject.SetActive(false);
+        }
+    }
     #endregion
 }

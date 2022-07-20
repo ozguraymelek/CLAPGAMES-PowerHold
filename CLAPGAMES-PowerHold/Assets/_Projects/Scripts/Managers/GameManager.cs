@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    [Header("References")] [SerializeField]
+    private INVBehaviour invBehaviour;
+
     [Header("Settings")] [SerializeField] private float timeScale;
     [SerializeField] private float activatePanelDelayTime;
 
@@ -35,7 +36,14 @@ public class GameManager : Singleton<GameManager>
 
     private void OnFail()
     {
-        Handheld.Vibrate();
+        // Handheld.Vibrate();
+        
+        invBehaviour.SetPlayer();
+        invBehaviour.DeactivateAllWorldSpaceCanvas();
+        invBehaviour.UnsubscribeMoveForward();
+        invBehaviour.DisableJSwordCollider();
+        invBehaviour.DisablePlayerCollider();
+        
         StartCoroutine(DelayPanelActivate(UIManager.Instance.failPanel));
     }
 
