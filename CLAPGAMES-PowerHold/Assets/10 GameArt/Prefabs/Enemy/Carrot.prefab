@@ -2243,7 +2243,7 @@ GameObject:
   - component: {fileID: 1872676340}
   - component: {fileID: 1872676341}
   m_Layer: 0
-  m_Name: Havuc
+  m_Name: Carrot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
