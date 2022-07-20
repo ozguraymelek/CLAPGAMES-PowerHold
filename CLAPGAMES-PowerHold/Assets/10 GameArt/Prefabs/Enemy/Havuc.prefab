@@ -2240,6 +2240,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6124777135590497986}
   - component: {fileID: 153043833220990136}
+  - component: {fileID: 1872676340}
+  - component: {fileID: 1872676341}
   m_Layer: 0
   m_Name: Havuc
   m_TagString: Untagged
@@ -2256,7 +2258,7 @@ Transform:
   m_GameObject: {fileID: 6896212753535337592}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4285713, y: 1.4285713, z: 1.4285713}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 292316615767810237}
@@ -2276,7 +2278,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6896212753535337592}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: f490f7ec699d38e4faad1fd32be3f720, type: 3}
   m_Controller: {fileID: 9100000, guid: 4b8352b05340d744cb9fc3b55ace0165, type: 2}
   m_CullingMode: 1
@@ -2288,6 +2290,86 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1872676340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6896212753535337592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd7131eac6c14639b7b531425a23c8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupRule: 0
+  totalityRule: 1
+  bones:
+  - {fileID: 2716151134104093320}
+--- !u!114 &1872676341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6896212753535337592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd56a8ae574e4fd492ffaed7fb8e357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alternatePrefab: {fileID: 100048, guid: 253e6f9721d604d97b674c7ddf4e8993, type: 3}
+  severables:
+  - {fileID: 1781256519306426286}
+  - {fileID: 2715818232350730383}
+  - {fileID: 5135226045825624975}
+  - {fileID: 2536187929120941863}
+  - {fileID: 3419712448638402488}
+  - {fileID: 8745907496028330497}
+  - {fileID: 7938650454663473640}
+  - {fileID: 615765672480969169}
+  - {fileID: 438304149285462466}
+  - {fileID: 4964812666937791561}
+  - {fileID: 7296122004736608333}
+  - {fileID: 6229556763325393384}
+  - {fileID: 6534437123479730956}
+  - {fileID: 5632646119602985545}
+  - {fileID: 5137056030002710610}
+  - {fileID: 8125357352345922051}
+  - {fileID: 6472730283639545414}
+  - {fileID: 5031436743762300800}
+  - {fileID: 4265949218711279293}
+  - {fileID: 4597085873459399180}
+  - {fileID: 8667995582466202101}
+  - {fileID: 4250703595826885376}
+  - {fileID: 941774313829483749}
+  - {fileID: 8430160282103455819}
+  - {fileID: 7609662697414532820}
+  - {fileID: 9192428142462927459}
+  - {fileID: 5685640519392651306}
+  - {fileID: 3838793780592264466}
+  - {fileID: 4534126856231073487}
+  - {fileID: 4668139467113245370}
+  - {fileID: 6560898796401894745}
+  - {fileID: 3045122595071538542}
+  - {fileID: 5602244680747793063}
+  - {fileID: 4575113710431312237}
+  - {fileID: 3967358972344302261}
+  - {fileID: 526442557747994641}
+  - {fileID: 6870759823211524073}
+  - {fileID: 1725693932924157223}
+  - {fileID: 2526355925334194489}
+  - {fileID: 6086359746958257036}
+  - {fileID: 2851855651217260275}
+  - {fileID: 2899583272166414534}
+  - {fileID: 5391925223556246481}
+  - {fileID: 4278160303826868106}
+  - {fileID: 8355560129428067286}
+  - {fileID: 720813617095806156}
+  - {fileID: 7001158568133633829}
+  - {fileID: 3767769979005073108}
+  infillMaterial: {fileID: 2100000, guid: deecda6b38e164a76beae141117472f9, type: 2}
+  infillMode: 1
 --- !u!1 &7099696676326417298
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,6 +2379,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2851855651217260275}
+  - component: {fileID: 8917978026743678143}
   m_Layer: 0
   m_Name: Base HumanRCalf
   m_TagString: Untagged
@@ -2313,13 +2396,26 @@ Transform:
   m_GameObject: {fileID: 7099696676326417298}
   m_LocalRotation: {x: 0.014671532, y: -0.0011580358, z: 0.013582913, w: 0.99979943}
   m_LocalPosition: {x: -0.046435513, y: 0.0000007784367, z: 0.000000044822695}
-  m_LocalScale: {x: 0.9999999, y: 0.99999994, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5391925223556246481}
   m_Father: {fileID: 6086359746958257036}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8917978026743678143
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7099696676326417298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0671815, y: 0.013198697, z: 0.051134795}
+  m_Center: {x: -0.015335936, y: -0.001618438, z: -0.01413132}
 --- !u!1 &7134527033842676437
 GameObject:
   m_ObjectHideFlags: 0
