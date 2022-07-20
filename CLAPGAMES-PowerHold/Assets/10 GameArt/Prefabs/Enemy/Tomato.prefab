@@ -157,7 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1073078501950023410}
   m_Layer: 0
-  m_Name: TomatoTPose
+  m_Name: Tomato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
