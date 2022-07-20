@@ -7,6 +7,9 @@ public class INVInputs : MonoBehaviour
     public static event Action<Vector3> PointerMoved;
     public static event Action<Vector3> PointerRemoved;
 
+    [Header("References")] [SerializeField]
+    private INVBehaviour invBehaviour;
+    
     [Header("Settings")] private Vector3 lastMousePosition;
 
     private void Start()
@@ -21,7 +24,7 @@ public class INVInputs : MonoBehaviour
 
     private void OnUpdate()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && invBehaviour.isPlayerDead == false)
         {
             lastMousePosition = Input.mousePosition;
             PointerPressed?.Invoke(lastMousePosition);

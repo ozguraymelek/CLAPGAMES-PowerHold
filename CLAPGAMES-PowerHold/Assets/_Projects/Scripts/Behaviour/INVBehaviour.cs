@@ -22,6 +22,7 @@ public class INVBehaviour : MonoBehaviour
     
     [Header("Settings")] [Space]
     public float playerSpeed;
+    public bool isPlayerDead = false;
     public float sensitivity;
     [SerializeField] private float boundX;
     public bool isPressing = false;
@@ -352,6 +353,7 @@ public class INVBehaviour : MonoBehaviour
     public void SetPlayer()
     {
         animator.SetTrigger("Die");
+        isPlayerDead = true;
         playerSettings.playerLevel = 1;
         text_level.text = $"LEVEL " + playerSettings.playerLevel;
     }

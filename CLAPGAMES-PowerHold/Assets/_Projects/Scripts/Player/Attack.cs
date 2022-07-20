@@ -15,7 +15,6 @@ public class Attack : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        
     }
 
     public void PlayerAttack()
