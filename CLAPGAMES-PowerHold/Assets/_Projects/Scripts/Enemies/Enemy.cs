@@ -121,17 +121,18 @@ public class Enemy : MonoBehaviour, IEnemy,IInteractible
         }
     }
 
+    public void Pushback()
+    {
+        
+    }
+
+    public void Pushup()
+    {
+        
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (interacted == true) return;
-        
-        if (other.GetComponent<INVBehaviour>() != null)
-        {
-            print("Player !");
-            ExploitPlayerLevel();
-            interacted = true;
-        }
-
         OnPlayerInteractWithEnemy(other);
     }
 
@@ -140,10 +141,18 @@ public class Enemy : MonoBehaviour, IEnemy,IInteractible
         OnEnter(collider);
     }
     
-    public void OnEnter(Collider collider)
+    public void OnEnter(Collider other)
     {
         
+        if (interacted == true) return;
+        if (other.GetComponentInChildren<Sword>().interacted == true) return;
         
+        if (other.GetComponent<INVBehaviour>() != null)
+        {
+            print("Player !");
+            ExploitPlayerLevel();
+            interacted = true;
+        }
     }
 
     public void OnStay()
