@@ -2866,6 +2866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8802bae8c959ea04e8be97143d5c08bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invBehaviour: {fileID: 7218138800728284958}
 --- !u!4 &582041325
 Transform:
   m_ObjectHideFlags: 0
@@ -3482,7 +3483,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744197300}
-  m_LocalRotation: {x: 0.081743374, y: 0.26597163, z: -0.02264161, w: 0.9602419}
+  m_LocalRotation: {x: 0.08174336, y: 0.26597163, z: -0.022641605, w: 0.9602419}
   m_LocalPosition: {x: -6, y: 3.5, z: -20.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12006,6 +12007,7 @@ MonoBehaviour:
   text_PopUp: {fileID: 1205375409}
   playerCanvas: {fileID: 403272195}
   playerSpeed: 0
+  isPlayerDead: 0
   sensitivity: 500
   boundX: 2
   isPressing: 0
