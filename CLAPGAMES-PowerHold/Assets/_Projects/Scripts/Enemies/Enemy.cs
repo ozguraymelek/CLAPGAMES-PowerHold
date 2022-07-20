@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour, IEnemy,IInteractible
     }
     private void SubscribeEvents()
     {
-        INVEvents.OnPlayerInteract += OnPlayerInteractWithEnemy;
+        
     }
 
     public EnemyType SetActiveEnemy()
@@ -123,7 +123,16 @@ public class Enemy : MonoBehaviour, IEnemy,IInteractible
 
     private void OnTriggerEnter(Collider other)
     {
-        FindObjectOfType<INVEvents>().OnPlayerInteractWithEnemy(other);
+        if (interacted == true) return;
+        
+        if (other.GetComponent<INVBehaviour>() != null)
+        {
+            print("Player !");
+            ExploitPlayerLevel();
+            interacted = true;
+        }
+
+        OnPlayerInteractWithEnemy(other);
     }
 
     private void OnPlayerInteractWithEnemy(Collider collider)
@@ -133,14 +142,8 @@ public class Enemy : MonoBehaviour, IEnemy,IInteractible
     
     public void OnEnter(Collider collider)
     {
-        if (interacted == true) return;
         
-        if (collider.GetComponent<INVBehaviour>() != null)
-        {
-            print("Player !");
-            ExploitPlayerLevel();
-            interacted = true;
-        }
+        
     }
 
     public void OnStay()
