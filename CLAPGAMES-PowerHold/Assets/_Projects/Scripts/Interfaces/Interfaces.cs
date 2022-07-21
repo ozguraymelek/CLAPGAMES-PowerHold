@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IEnemy
 {
-    void EnemyLevel(EnemyType enemyType);
+    void EnemyLevel(EnemyTypes enemyType);
 }
 
 public interface IInteractible

@@ -50,7 +50,7 @@ public class Sword : MonoBehaviour, IInteractible
         if (collider.GetComponent<IEnemy>() != null)
         {
             print("Enemy!");
-            invBehaviour.ExploitEnemyLevel(collider.GetComponent<Enemy>());
+            // invBehaviour.ExploitEnemyLevel(collider.GetComponent<Enemy>());
             interacted = true;
         }
     }

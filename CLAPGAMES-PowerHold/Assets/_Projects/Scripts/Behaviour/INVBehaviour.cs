@@ -184,99 +184,99 @@ public class INVBehaviour : MonoBehaviour
         text_level.text = $"LEVEL  " + playerSettings.playerLevel;
     }
 
-    public void ExploitEnemyLevel(Enemy enemy)
-    {
-        switch (enemy.SetActiveEnemy())
-        {
-            case EnemyType.Type1:
-                Text_PopUp_Plus(enemy);
-                playerSettings.playerLevel += enemy.type1_Level;
-                text_level.text = $"LEVEL  " + playerSettings.playerLevel;
-                break;
-            case EnemyType.Type2:
-                Text_PopUp_Plus(enemy);
-                playerSettings.playerLevel += enemy.type2_Level;
-                text_level.text = $"LEVEL  " + playerSettings.playerLevel;
-                break;
-            case EnemyType.Type3:
-                Text_PopUp_Plus(enemy);
-                playerSettings.playerLevel += enemy.type3_Level;
-                text_level.text = $"LEVEL  " + playerSettings.playerLevel;
-                break;
-        }
-    }
+    // public void ExploitEnemyLevel(Enemy enemy)
+    // {
+    //     switch (enemy.SetActiveEnemy())
+    //     {
+    //         case EnemyType.Type1:
+    //             Text_PopUp_Plus(enemy);
+    //             playerSettings.playerLevel += enemy.type1_Level;
+    //             text_level.text = $"LEVEL  " + playerSettings.playerLevel;
+    //             break;
+    //         case EnemyType.Type2:
+    //             Text_PopUp_Plus(enemy);
+    //             playerSettings.playerLevel += enemy.type2_Level;
+    //             text_level.text = $"LEVEL  " + playerSettings.playerLevel;
+    //             break;
+    //         case EnemyType.Type3:
+    //             Text_PopUp_Plus(enemy);
+    //             playerSettings.playerLevel += enemy.type3_Level;
+    //             text_level.text = $"LEVEL  " + playerSettings.playerLevel;
+    //             break;
+    //     }
+    // }
     #endregion
 
     #region Pop Ups
 
-    public void Text_PopUp_Plus(Enemy enemy)
-    {
-        switch (enemy.SetActiveEnemy())
-        {
-            case EnemyType.Type1:
-                text_PopUp.text = $"+" + enemy.type1_Level;
-                break;
-            case EnemyType.Type2:
-                text_PopUp.text = $"+" + enemy.type2_Level;
-                break;
-            case EnemyType.Type3:
-                text_PopUp.text = $"+" + enemy.type3_Level;
-                break;
-        }
-
-        text_PopUp.transform.DOScale(Vector3.one, 1.5f).OnComplete(() =>
-        {
-            text_PopUp.transform.DOLocalMoveY(.9f, 1f);
-            
-            text_PopUp.transform.DOPunchScale(Vector3.one*.5f, 1f).OnComplete(() =>
-            {
-                text_PopUp.DOColor(Color.green, .3f).OnComplete(() =>
-                {
-                    text_PopUp.text = null;
-                    
-                    text_PopUp.transform.localPosition = new Vector3(0f, .5f, 0f);
-                    text_PopUp.transform.localScale = Vector3.zero;
-
-                    text_PopUp.color = Color.white;
-
-                });
-            });
-        });
-    }
+    // public void Text_PopUp_Plus(Enemy enemy)
+    // {
+    //     switch (enemy.SetActiveEnemy())
+    //     {
+    //         case EnemyType.Type1:
+    //             text_PopUp.text = $"+" + enemy.type1_Level;
+    //             break;
+    //         case EnemyType.Type2:
+    //             text_PopUp.text = $"+" + enemy.type2_Level;
+    //             break;
+    //         case EnemyType.Type3:
+    //             text_PopUp.text = $"+" + enemy.type3_Level;
+    //             break;
+    //     }
+    //
+    //     text_PopUp.transform.DOScale(Vector3.one, 1.5f).OnComplete(() =>
+    //     {
+    //         text_PopUp.transform.DOLocalMoveY(.9f, 1f);
+    //         
+    //         text_PopUp.transform.DOPunchScale(Vector3.one*.5f, 1f).OnComplete(() =>
+    //         {
+    //             text_PopUp.DOColor(Color.green, .3f).OnComplete(() =>
+    //             {
+    //                 text_PopUp.text = null;
+    //                 
+    //                 text_PopUp.transform.localPosition = new Vector3(0f, .5f, 0f);
+    //                 text_PopUp.transform.localScale = Vector3.zero;
+    //
+    //                 text_PopUp.color = Color.white;
+    //
+    //             });
+    //         });
+    //     });
+    // }
     
-    public void Text_PopUp_Minus(Enemy enemy)
-    {
-        switch (enemy.SetActiveEnemy())
-        {
-            case EnemyType.Type1:
-                text_PopUp.text = $"-" + enemy.type1_Level;
-                break;
-            case EnemyType.Type2:
-                text_PopUp.text = $"-" + enemy.type2_Level;
-                break;
-            case EnemyType.Type3:
-                text_PopUp.text = $"-" + enemy.type3_Level;
-                break;
-        }
-
-        text_PopUp.transform.DOScale(Vector3.one, .5f).OnComplete(() =>
-        {
-            text_PopUp.transform.DOLocalMoveY(.9f, .5f);
-            
-            text_PopUp.transform.DOPunchScale(Vector3.one*.5f, 1f).OnComplete(() =>
-            {
-                text_PopUp.DOColor(Color.red, .3f).OnComplete(() =>
-                {
-                    text_PopUp.text = null;
-                    
-                    text_PopUp.transform.localPosition = new Vector3(0f, .5f, 0f);
-                    text_PopUp.transform.localScale = Vector3.zero;
-                    
-                    text_PopUp.color = Color.white;
-                });
-            });
-        });
-    }
+    // public void Text_PopUp_Minus(Enemy enemy)
+    // {
+    //     switch (enemy.SetActiveEnemy())
+    //     {
+    //         case EnemyType.Type1:
+    //             text_PopUp.text = $"-" + enemy.type1_Level;
+    //             break;
+    //         case EnemyType.Type2:
+    //             text_PopUp.text = $"-" + enemy.type2_Level;
+    //             break;
+    //         case EnemyType.Type3:
+    //             text_PopUp.text = $"-" + enemy.type3_Level;
+    //             break;
+    //     }
+    //
+    //     text_PopUp.transform.DOScale(Vector3.one, .5f).OnComplete(() =>
+    //     {
+    //         text_PopUp.transform.DOLocalMoveY(.9f, .5f);
+    //         
+    //         text_PopUp.transform.DOPunchScale(Vector3.one*.5f, 1f).OnComplete(() =>
+    //         {
+    //             text_PopUp.DOColor(Color.red, .3f).OnComplete(() =>
+    //             {
+    //                 text_PopUp.text = null;
+    //                 
+    //                 text_PopUp.transform.localPosition = new Vector3(0f, .5f, 0f);
+    //                 text_PopUp.transform.localScale = Vector3.zero;
+    //                 
+    //                 text_PopUp.color = Color.white;
+    //             });
+    //         });
+    //     });
+    // }
     
     #endregion
 
