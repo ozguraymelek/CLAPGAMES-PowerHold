@@ -74,17 +74,17 @@ public class Carrot : Enemy
         switch (SetActiveEnemy())
         {
             case EnemyTypes.CarrotType1:
-                // invBehaviour.Text_PopUp_Minus(this);
+                invBehaviour.Text_PopUp_Minus(this);
                 playerSettings.playerLevel -= type1_Level;
                 invBehaviour.text_level.text = $"LEVEL  " + playerSettings.playerLevel;
                 break;
             case EnemyTypes.CarrotType2:
-                // invBehaviour.Text_PopUp_Minus(this);
+                invBehaviour.Text_PopUp_Minus(this);
                 playerSettings.playerLevel -= type2_Level;
                 invBehaviour.text_level.text = $"LEVEL  " + playerSettings.playerLevel;
                 break;
             case EnemyTypes.CarrotBoss:
-                // invBehaviour.Text_PopUp_Minus(this);
+                invBehaviour.Text_PopUp_Minus(this);
                 playerSettings.playerLevel -= boss_Level;
                 invBehaviour.text_level.text = $"LEVEL  " + playerSettings.playerLevel;
                 break;
@@ -95,12 +95,11 @@ public class Carrot : Enemy
 
     public override void OnEnter(Collider collider)
     {
-        if (collider.GetComponentInChildren<Sword>().interacted == true) return;
-        
         if (collider.GetComponent<INVBehaviour>() != null)
         {
             print("Player !");
-
+            if (collider.GetComponentInChildren<Sword>().interacted == true) return;
+            
             ExploitPlayerLevel();
             invBehaviour.InteractWithEnemy();
             interacted = true;
@@ -150,6 +149,8 @@ public class Carrot : Enemy
     private void OnTriggerEnter(Collider other)
     {
         OnEnemyInteractWithPlayer(other);
+
+        interacted = true;
     }
 
     private void OnTriggerStay(Collider other)
@@ -160,6 +161,8 @@ public class Carrot : Enemy
     private void OnTriggerExit(Collider other)
     {
         OnEnemyNotInteractWitPlayerAnymore(other);
+
+        interacted = false;
     }
 
     #endregion

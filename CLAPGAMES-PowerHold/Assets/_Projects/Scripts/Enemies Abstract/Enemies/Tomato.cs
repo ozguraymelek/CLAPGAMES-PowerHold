@@ -74,17 +74,17 @@ public class Tomato : Enemy
         switch (SetActiveEnemy())
         {
             case EnemyTypes.TomatoType1:
-                // invBehaviour.Text_PopUp_Minus(this);
+                invBehaviour.Text_PopUp_Minus(this);
                 playerSettings.playerLevel -= type1_Level;
                 invBehaviour.text_level.text = $"LEVEL  " + playerSettings.playerLevel;
                 break;
             case EnemyTypes.TomatoType2:
-                // invBehaviour.Text_PopUp_Minus(this);
+                invBehaviour.Text_PopUp_Minus(this);
                 playerSettings.playerLevel -= type2_Level;
                 invBehaviour.text_level.text = $"LEVEL  " + playerSettings.playerLevel;
                 break;
             case EnemyTypes.TomatoBoss:
-                // invBehaviour.Text_PopUp_Minus(this);
+                invBehaviour.Text_PopUp_Minus(this);
                 playerSettings.playerLevel -= boss_Level;
                 invBehaviour.text_level.text = $"LEVEL  " + playerSettings.playerLevel;
                 break;

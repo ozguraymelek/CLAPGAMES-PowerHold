@@ -74,17 +74,17 @@ public class Hamburger : Enemy
         switch (SetActiveEnemy())
         {
             case EnemyTypes.HamburgerType1:
-                // invBehaviour.Text_PopUp_Minus(this);
+                invBehaviour.Text_PopUp_Minus(this);
                 playerSettings.playerLevel -= type1_Level;
                 invBehaviour.text_level.text = $"LEVEL  " + playerSettings.playerLevel;
                 break;
             case EnemyTypes.HamburgerType2:
-                // invBehaviour.Text_PopUp_Minus(this);
+                invBehaviour.Text_PopUp_Minus(this);
                 playerSettings.playerLevel -= type2_Level;
                 invBehaviour.text_level.text = $"LEVEL  " + playerSettings.playerLevel;
                 break;
             case EnemyTypes.HamburgerBoss:
-                // invBehaviour.Text_PopUp_Minus(this);
+                invBehaviour.Text_PopUp_Minus(this);
                 playerSettings.playerLevel -= boss_Level;
                 invBehaviour.text_level.text = $"LEVEL  " + playerSettings.playerLevel;
                 break;

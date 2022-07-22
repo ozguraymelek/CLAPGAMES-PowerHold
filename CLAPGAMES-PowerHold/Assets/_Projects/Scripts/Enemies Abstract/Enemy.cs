@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -22,7 +19,7 @@ public enum EnemyTypes
     
     HotdogType1 = 10,
     HotdogType2 = 11,
-    HotdogType3 = 12
+    HotdogBoss = 12
 }
 
 #endregion

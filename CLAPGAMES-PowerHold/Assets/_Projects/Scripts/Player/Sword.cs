@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using EzySlice;
 public class Sword : MonoBehaviour, IInteractible
 {
     [Header("Scriptable Objects Reference")] [SerializeField]
@@ -16,6 +13,7 @@ public class Sword : MonoBehaviour, IInteractible
     
     [Header("Settings")] public bool interacted = false;
 
+
     private void Start()
     {
         SubscribeEvents();
@@ -28,6 +26,7 @@ public class Sword : MonoBehaviour, IInteractible
     private void OnTriggerEnter(Collider other)
     {
         FindObjectOfType<INVEvents>().OnSwordInteractWithEnemy(other);
+        
     }
 
     private void OnTriggerExit(Collider other)
@@ -43,14 +42,14 @@ public class Sword : MonoBehaviour, IInteractible
     
     #region Implement
     
-    public void OnEnter(Collider collider)
+    public void OnEnter(Collider other)
     {
         if (interacted == true) return;
 
-        if (collider.GetComponent<IEnemy>() != null)
+        if (other.GetComponent<IEnemy>() != null)
         {
             print("Enemy!");
-            // invBehaviour.ExploitEnemyLevel(collider.GetComponent<Enemy>());
+            invBehaviour.ExploitEnemyLevel(other.GetComponent<Enemy>());
             interacted = true;
         }
     }
@@ -66,5 +65,4 @@ public class Sword : MonoBehaviour, IInteractible
     }
     
     #endregion
-    
 }

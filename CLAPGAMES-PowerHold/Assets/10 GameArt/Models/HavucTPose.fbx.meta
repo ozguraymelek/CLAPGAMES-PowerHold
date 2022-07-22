@@ -20,46 +20,7 @@ ModelImporter:
     removeConstantScaleCurves: 1
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
-      does not match position in animation file:\n\t'Base HumanLThigh' : position
-      error = 11537.506836 mm\n\t'Base HumanLCalf' : position error = 36082.910156
-      mm\n\t'Base HumanLFoot' : position error = 36521.328125 mm\n\t'Base HumanLToe11'
-      : position error = 12629.828125 mm\n\t'Base HumanRThigh' : position error =
-      11537.943359 mm\n\t'Base HumanRCalf' : position error = 36082.218750 mm\n\t'Base
-      HumanRFoot' : position error = 36518.203125 mm\n\t'Base HumanRToe11' : position
-      error = 12837.118164 mm\n\t'Base HumanSpine1' : position error = 12131.589844
-      mm\n\t'Base HumanSpine2' : position error = 14153.519531 mm\n\t'Base HumanSpine3'
-      : position error = 16175.462891 mm\n\t'Base HumanRibcage' : position error
-      = 18860.123047 mm\n\t'Base HumanLCollarbone' : position error = 9681.083984
-      mm\n\t'Base HumanLUpperarm' : position error = 21282.574219 mm\n\t'Base HumanLForearm'
-      : position error = 17790.550781 mm\n\t'Base HumanLPalm' : position error =
-      28977.337891 mm\n\t'Base HumanLFinger11' : position error = 3975.442871 mm\n\t'Base
-      HumanLFinger12' : position error = 3181.639160 mm\n\t'Base HumanLFinger13'
-      : position error = 1783.004517 mm\n\t'Base HumanLFinger21' : position error
-      = 10447.143555 mm\n\t'Base HumanLFinger22' : position error = 1199.409790 mm\n\t'Base
-      HumanLFinger23' : position error = 1120.521484 mm\n\t'Base HumanLFinger31'
-      : position error = 10767.249023 mm\n\t'Base HumanLFinger32' : position error
-      = 1549.721313 mm\n\t'Base HumanLFinger33' : position error = 1585.516724 mm\n\t'Base
-      HumanLFinger41' : position error = 11006.479492 mm\n\t'Base HumanLFinger42'
-      : position error = 1108.077881 mm\n\t'Base HumanLFinger43' : position error
-      = 1118.553223 mm\n\t'Base HumanLFinger51' : position error = 9763.519531 mm\n\t'Base
-      HumanLFinger52' : position error = 1284.585205 mm\n\t'Base HumanLFinger53'
-      : position error = 1096.772461 mm\n\t'Base HumanRCollarbone' : position error
-      = 9658.598633 mm\n\t'Base HumanRUpperarm' : position error = 21282.585938 mm\n\t'Base
-      HumanRForearm' : position error = 17776.761719 mm\n\t'Base HumanRPalm' : position
-      error = 28975.060547 mm\n\t'Base HumanRFinger11' : position error = 5422.523926
-      mm\n\t'Base HumanRFinger12' : position error = 4338.504395 mm\n\t'Base HumanRFinger13'
-      : position error = 2328.284180 mm\n\t'Base HumanRFinger21' : position error
-      = 10655.956055 mm\n\t'Base HumanRFinger22' : position error = 1674.477173 mm\n\t'Base
-      HumanRFinger23' : position error = 1527.033691 mm\n\t'Base HumanRFinger31'
-      : position error = 7478.213379 mm\n\t'Base HumanRFinger32' : position error
-      = 3486.572021 mm\n\t'Base HumanRFinger33' : position error = 1904.247925 mm\n\t'Base
-      HumanRFinger41' : position error = 10752.174805 mm\n\t'Base HumanRFinger42'
-      : position error = 1230.094971 mm\n\t'Base HumanRFinger43' : position error
-      = 1138.507935 mm\n\t'Base HumanRFinger51' : position error = 9718.171875 mm\n\t'Base
-      HumanRFinger52' : position error = 1326.531006 mm\n\t'Base HumanRFinger53'
-      : position error = 1096.636230 mm\n\t'Base HumanNeck' : position error = 3436.406006
-      mm\n\t'Base HumanHead' : position error = 13716.898438 mm\n"
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -74,7 +35,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
