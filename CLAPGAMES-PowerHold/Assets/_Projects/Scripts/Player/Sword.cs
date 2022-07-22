@@ -60,7 +60,7 @@ public class Sword : Singleton<Sword>, IInteractible
             Cut.Instance._material = other.GetComponent<MeshRenderer>().material;
             Cut.Instance.willCutObj = other.gameObject;
             Cut.Instance.Slice();
-
+            ExampleHead.Instance.DismemberAllRig();
             interacted = true;
         }
     }

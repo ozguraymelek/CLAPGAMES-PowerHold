@@ -3,13 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExampleHead : MonoBehaviour
+public class ExampleHead : Singleton<ExampleHead>
 {
     public RagdollDismembermentVisual _dismemberment;
-    public CharacterJoint _joint;
+    public CharacterJoint[] _joints;
 
-    private void OnEnable()
+    public void DismemberAllRig()
     {
-        _dismemberment.Dismember("Forearm");
+        _dismemberment.Dismember("R_Thigh");
+        _dismemberment.Dismember("R_Calf");
+
+        foreach (var joint in _joints)
+        {
+            joint.breakForce = 0;
+        }
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(1f);
+        
+        foreach (var joint in _joints)
+        {
+            joint.breakForce = 0;
+        }
     }
 }
