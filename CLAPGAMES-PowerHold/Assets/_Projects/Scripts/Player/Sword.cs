@@ -2,23 +2,25 @@ using UnityEngine;
 using EzySlice;
 public class Sword : Singleton<Sword>, IInteractible
 {
-    [Header("Scriptable Objects Reference")] [SerializeField]
+    [Header("Scriptable Objects Reference")]
+    [SerializeField]
     private PlayerSettings playerSettings;
 
-    [Header("References")] [SerializeField]
+    [Header("References")]
+    [SerializeField]
     private INVBehaviour invBehaviour;
-    
+
     [Header("Components")]
     public BoxCollider boxCollider;
-    
+
     [Header("Settings")] public bool interacted = false;
 
-    
+
     [Header("Slice Settings")] [Space] public Material materialSlicedSide;
     public float explosionForce;
     public float explosionRadius;
     public bool gravity, kinematic;
-    
+
     private void Start()
     {
         SubscribeEvents();
@@ -32,7 +34,7 @@ public class Sword : Singleton<Sword>, IInteractible
     {
         // FindObjectOfType<INVEvents>().OnSwordInteractWithEnemy(other);
         OnSwordInteractWithEnemy(other);
-        
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -43,39 +45,39 @@ public class Sword : Singleton<Sword>, IInteractible
     public void OnSwordInteractWithEnemy(Collider collider)
     {
         OnEnter(collider);
-        
+
     }
 
-    
+
     #region Implement
-    
+
     public void OnEnter(Collider other)
     {
         if (interacted == true) return;
-        
+
         if (other.gameObject.layer == LayerMask.NameToLayer("Cuttable"))
         {
             print("ttT");
+            other.transform.parent.parent.GetComponent<ExampleHead>().DismemberAllRig();
             other.transform.parent = null;
             Cut.Instance._material = other.GetComponent<MeshRenderer>().material;
             Cut.Instance.willCutObj = other.gameObject;
             Cut.Instance.Slice();
-            ExampleHead.Instance.DismemberAllRig();
             interacted = true;
         }
     }
 
     public void OnStay(Collider other)
     {
-        
+
     }
 
     public void OnExit(Collider other)
     {
         Cut.Instance.cuttedd = false;
     }
-    
+
     #endregion
-    
-    
+
+
 }

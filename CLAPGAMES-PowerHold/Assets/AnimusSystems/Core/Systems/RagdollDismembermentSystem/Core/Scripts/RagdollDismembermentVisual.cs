@@ -5,7 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine.Events;
 
-public class RagdollDismembermentVisual : MonoBehaviour {
+public class RagdollDismembermentVisual : MonoBehaviour
+{
     [Header("Events")]
     public DismemberOperationEvent OnDismemberCompleted;
     public List<BodyFragment> Fragments;
@@ -61,7 +62,7 @@ public class RagdollDismembermentVisual : MonoBehaviour {
             }
             var fragment = operations[0];
             //1. Find parent fragment
-            var Parents = Fragments.FindAll(f => f!=fragment && fragment.bone.IsChildOf(f.bone) && f.SkinnedMeshes != null && f.SkinnedMeshes.Count > 0);
+            var Parents = Fragments.FindAll(f => f != fragment && fragment.bone.IsChildOf(f.bone) && f.SkinnedMeshes != null && f.SkinnedMeshes.Count > 0);
             if (Parents == null || Parents.Count == 0)
             {
                 operations.RemoveAt(0);
@@ -106,7 +107,7 @@ public class RagdollDismembermentVisual : MonoBehaviour {
     {
         var LODGroup = fragment.bone.gameObject.AddComponent<LODGroup>();
         var LODs = original.GetLODs();
-        for (int i=0; i<LODs.Length; i++)
+        for (int i = 0; i < LODs.Length; i++)
         {
             LODs[i].renderers = fragment.SkinnedMeshes.Where(m => m.name[m.name.Length - 1].ToString() == i.ToString()).ToArray();
         }
@@ -114,7 +115,7 @@ public class RagdollDismembermentVisual : MonoBehaviour {
     }
     public bool[] SelectionMask;
     public int SelectionMaskLength;
-    public void GetSelection(SkinnedMeshRenderer skinnedMesh, BodyFragment fragment, SelectionMode mode= SelectionMode.Replace)
+    public void GetSelection(SkinnedMeshRenderer skinnedMesh, BodyFragment fragment, SelectionMode mode = SelectionMode.Replace)
     {
         var Mesh = skinnedMesh.sharedMesh;
         var Vertices = Mesh.vertices;
@@ -129,27 +130,28 @@ public class RagdollDismembermentVisual : MonoBehaviour {
         }
 
         if (mode == SelectionMode.Replace) for (int i = 0; i < Vertices.Length; i++) SelectionMask[i] = false;
-        if (fragment.bone == null || fragment.Size.x==0 || fragment.Size.y==0 || fragment.Size.z==0) return;
-        
+        if (fragment.bone == null || fragment.Size.x == 0 || fragment.Size.y == 0 || fragment.Size.z == 0) return;
+
         var bindposeIndex = System.Array.FindIndex(skinnedMesh.bones, b => b == fragment.bone);
         if (bindposeIndex == -1) return;
-        
+
         var Tris = Mesh.triangles;
 
-        var M = Matrix4x4.Inverse(Matrix4x4.TRS(fragment.Position, Quaternion.Euler(fragment.Rotation), fragment.Size))*  Mesh.bindposes[bindposeIndex];
+        var M = Matrix4x4.Inverse(Matrix4x4.TRS(fragment.Position, Quaternion.Euler(fragment.Rotation), fragment.Size)) * Mesh.bindposes[bindposeIndex];
         Vector3 point;
 
-        for (int i=0; i<Tris.Length;i+=3)
+        for (int i = 0; i < Tris.Length; i += 3)
         {
-            var p = (Vertices[Tris[i]]+Vertices[Tris[i+1]]+Vertices[Tris[i+2]])/3.0f;
-            
+            var p = (Vertices[Tris[i]] + Vertices[Tris[i + 1]] + Vertices[Tris[i + 2]]) / 3.0f;
+
             point.x = M.m00 * p.x + M.m01 * p.y + M.m02 * p.z + M.m03;
             point.y = M.m10 * p.x + M.m11 * p.y + M.m12 * p.z + M.m13;
             point.z = M.m20 * p.x + M.m21 * p.y + M.m22 * p.z + M.m23;
 
-            if (point.x>-0.5 && point.x<0.5
-                && point.y>-0.5 && point.y<0.5 &&
-                point.z>-0.5 && point.z<0.5) {
+            if (point.x > -0.5 && point.x < 0.5
+                && point.y > -0.5 && point.y < 0.5 &&
+                point.z > -0.5 && point.z < 0.5)
+            {
 
                 SelectionMask[Tris[i]] = true;
                 SelectionMask[Tris[i + 1]] = true;
@@ -160,7 +162,7 @@ public class RagdollDismembermentVisual : MonoBehaviour {
     public SelectionStatus GetSelectionStatus()
     {
         var result = SelectionStatus.Empty;
-        for (int i=0; i<SelectionMaskLength; i++)
+        for (int i = 0; i < SelectionMaskLength; i++)
         {
             if (result == SelectionStatus.Empty && SelectionMask[i]) result = SelectionStatus.Mixed;
             else if (result == SelectionStatus.Mixed && !SelectionMask[i]) return result;
@@ -180,7 +182,7 @@ public class RagdollDismembermentVisual : MonoBehaviour {
         }
         var status = GetSelectionStatus();
         //3. If selection is empty, then don't do anything
-        if (status== SelectionStatus.Empty)
+        if (status == SelectionStatus.Empty)
         {
             ReplaceBindposes(skinnedMesh, fragment.bone, BindposeReplacementMode.ReplaceChildren);
             return false;
@@ -189,7 +191,7 @@ public class RagdollDismembermentVisual : MonoBehaviour {
         fragment.SkinnedMeshes.Add(skinnedMesh.Copy(fragment.bone.gameObject));
         fragment.SkinnedMeshes[fragment.SkinnedMeshes.Count - 1].rootBone = fragment.bone;
         //5. If selection covers entire mesh, then destroy parent skinned mesh
-        if (status== SelectionStatus.Full)
+        if (status == SelectionStatus.Full)
         {
             Destroy(skinnedMesh);
             ReplaceBindposes(fragment.SkinnedMeshes[fragment.SkinnedMeshes.Count - 1], fragment.bone, BindposeReplacementMode.ReplaceParents);
@@ -198,7 +200,7 @@ public class RagdollDismembermentVisual : MonoBehaviour {
         //6. Separate selection into fragment shared mesh
         var mesh = await skinnedMesh.sharedMesh.SimpleSplit(SelectionMask);
         if (this == null) return false;
-        fragment.SkinnedMeshes[fragment.SkinnedMeshes.Count - 1].sharedMesh = mesh; 
+        fragment.SkinnedMeshes[fragment.SkinnedMeshes.Count - 1].sharedMesh = mesh;
         //7. Replace bindposes for parent mesh
         ReplaceBindposes(skinnedMesh, fragment.bone, BindposeReplacementMode.ReplaceChildren);
         //8. Replace bindposes for fragment mesh
@@ -210,17 +212,19 @@ public class RagdollDismembermentVisual : MonoBehaviour {
     {
         var bones = skinnedMesh.bones;
         var bindposes = skinnedMesh.sharedMesh.bindposes;
-        var index = System.Array.FindIndex(bones, b => b == (mode== BindposeReplacementMode.ReplaceParents? CrackedBone:CrackedBone.parent));
+        var index = System.Array.FindIndex(bones, b => b == (mode == BindposeReplacementMode.ReplaceParents ? CrackedBone : CrackedBone.parent));
         for (int i = 0; i < bones.Length; i++)
         {
-           
+
             switch (mode)
             {
                 case BindposeReplacementMode.ReplaceChildren:
                     if (bones[i].IsChildOf(CrackedBone))
                     {
                         bones[i] = CrackedBone.parent;
-                        bindposes[i] = bindposes[index];
+                        print($"{i}, {index}");
+                        if (index > 0)
+                            bindposes[i] = bindposes[index];
                     }
                     break;
                 case BindposeReplacementMode.ReplaceParents:
