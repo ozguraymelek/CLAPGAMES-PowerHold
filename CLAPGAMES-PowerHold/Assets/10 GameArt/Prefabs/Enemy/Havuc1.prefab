@@ -935,13 +935,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2055035659884525024}
-  m_LocalRotation: {x: 0.7071068, y: 4.32978e-17, z: -0.7071067, w: 4.3297806e-17}
-  m_LocalPosition: {x: -0.10923318, y: 0.006103813, z: 0.0021227875}
+  m_LocalRotation: {x: -0.0000000019694724, y: 0.000000059604638, z: 0.0000000019694721,
+    w: 1}
+  m_LocalPosition: {x: -0.0021, y: -0.0072, z: 0.1608}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3579868634544734175}
-  m_RootOrder: 4
+  m_Father: {fileID: 3717086867625078607}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2920131652245592477
 MeshFilter:
@@ -1002,6 +1003,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1631783556746162891}
+  - component: {fileID: 789120593}
+  - component: {fileID: 789120594}
   m_Layer: 0
   m_Name: Havuc1
   m_TagString: Untagged
@@ -1030,6 +1033,270 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &789120593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2156822707711109233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 262346b2fbdc5b64db3177847fe06b0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDismemberCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  Fragments:
+  - ShowWireframe: 1
+    ShowProperties: 1
+    Name: ROOT
+    bone: {fileID: 1631783556746162891}
+    BoundsDetails: 0
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    Size: {x: 0, y: 0, z: 0}
+    BoneEffect: {fileID: 0}
+    BoneEffectDetails: 0
+    BoneEffectPosition: {x: 0, y: 0, z: 0}
+    BoneEffectRotation: {x: 0, y: 0, z: 0}
+    BoneEffectSize: {x: 0, y: 0, z: 0}
+    BoneParentEffect: {fileID: 0}
+    BoneParentEffectDetails: 0
+    BoneParentEffectPosition: {x: 0, y: 0, z: 0}
+    BoneParentEffectRotation: {x: 0, y: 0, z: 0}
+    BoneParentEffectSize: {x: 0, y: 0, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 1}
+    SkinnedMeshes:
+    - {fileID: 4709508944877832374}
+    - {fileID: 3750491690246869478}
+  - ShowWireframe: 1
+    ShowProperties: 1
+    Name: R_Thigh
+    bone: {fileID: 1598146559093835653}
+    BoundsDetails: 1
+    Position: {x: -0.023217771, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    Size: {x: 0.046435542, y: 0.027861327, z: 0.027861327}
+    BoneEffect: {fileID: 0}
+    BoneEffectDetails: 0
+    BoneEffectPosition: {x: 0, y: 0, z: 0}
+    BoneEffectRotation: {x: 0, y: 0, z: 0}
+    BoneEffectSize: {x: 0, y: 0, z: 0}
+    BoneParentEffect: {fileID: 0}
+    BoneParentEffectDetails: 0
+    BoneParentEffectPosition: {x: 0, y: 0, z: 0}
+    BoneParentEffectRotation: {x: 0, y: 0, z: 0}
+    BoneParentEffectSize: {x: 0, y: 0, z: 0}
+    color: {r: 0, g: 0.71220183, b: 1, a: 1}
+    SkinnedMeshes: []
+  - ShowWireframe: 1
+    ShowProperties: 1
+    Name: R_Calf
+    bone: {fileID: 7334399788262970106}
+    BoundsDetails: 1
+    Position: {x: -0.026819866, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    Size: {x: 0.053639732, y: 0.026819866, z: 0.026819866}
+    BoneEffect: {fileID: 0}
+    BoneEffectDetails: 0
+    BoneEffectPosition: {x: 0, y: 0, z: 0}
+    BoneEffectRotation: {x: 0, y: 0, z: 0}
+    BoneEffectSize: {x: 0, y: 0, z: 0}
+    BoneParentEffect: {fileID: 0}
+    BoneParentEffectDetails: 0
+    BoneParentEffectPosition: {x: 0, y: 0, z: 0}
+    BoneParentEffectRotation: {x: 0, y: 0, z: 0}
+    BoneParentEffectSize: {x: 0, y: 0, z: 0}
+    color: {r: 1, g: 0, b: 1, a: 1}
+    SkinnedMeshes: []
+  - ShowWireframe: 1
+    ShowProperties: 1
+    Name: L_Thigh
+    bone: {fileID: 8720589577328589699}
+    BoundsDetails: 1
+    Position: {x: -0.023218207, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    Size: {x: 0.046436414, y: 0.02786185, z: 0.02786185}
+    BoneEffect: {fileID: 0}
+    BoneEffectDetails: 0
+    BoneEffectPosition: {x: 0, y: 0, z: 0}
+    BoneEffectRotation: {x: 0, y: 0, z: 0}
+    BoneEffectSize: {x: 0, y: 0, z: 0}
+    BoneParentEffect: {fileID: 0}
+    BoneParentEffectDetails: 0
+    BoneParentEffectPosition: {x: 0, y: 0, z: 0}
+    BoneParentEffectRotation: {x: 0, y: 0, z: 0}
+    BoneParentEffectSize: {x: 0, y: 0, z: 0}
+    color: {r: 1, g: 0, b: 0, a: 1}
+    SkinnedMeshes: []
+  - ShowWireframe: 1
+    ShowProperties: 1
+    Name: L_Calf
+    bone: {fileID: 5213494976375251141}
+    BoundsDetails: 1
+    Position: {x: -0.026839402, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    Size: {x: 0.053678803, y: 0.026839402, z: 0.026839402}
+    BoneEffect: {fileID: 0}
+    BoneEffectDetails: 0
+    BoneEffectPosition: {x: 0, y: 0, z: 0}
+    BoneEffectRotation: {x: 0, y: 0, z: 0}
+    BoneEffectSize: {x: 0, y: 0, z: 0}
+    BoneParentEffect: {fileID: 0}
+    BoneParentEffectDetails: 0
+    BoneParentEffectPosition: {x: 0, y: 0, z: 0}
+    BoneParentEffectRotation: {x: 0, y: 0, z: 0}
+    BoneParentEffectSize: {x: 0, y: 0, z: 0}
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    SkinnedMeshes: []
+  - ShowWireframe: 1
+    ShowProperties: 1
+    Name: Spine
+    bone: {fileID: 7013720289152111920}
+    BoundsDetails: 1
+    Position: {x: 0.02122764, y: -0.0007176548, z: 0.000000011175871}
+    Rotation: {x: 0, y: 0, z: 0}
+    Size: {x: 0.042455267, y: 0.029243253, z: 0.05222299}
+    BoneEffect: {fileID: 0}
+    BoneEffectDetails: 0
+    BoneEffectPosition: {x: 0, y: 0, z: 0}
+    BoneEffectRotation: {x: 0, y: 0, z: 0}
+    BoneEffectSize: {x: 0, y: 0, z: 0}
+    BoneParentEffect: {fileID: 0}
+    BoneParentEffectDetails: 0
+    BoneParentEffectPosition: {x: 0, y: 0, z: 0}
+    BoneParentEffectRotation: {x: 0, y: 0, z: 0}
+    BoneParentEffectSize: {x: 0, y: 0, z: 0}
+    color: {r: 0, g: 0, b: 1, a: 1}
+    SkinnedMeshes: []
+  - ShowWireframe: 1
+    ShowProperties: 1
+    Name: Head
+    bone: {fileID: 3057716483705578550}
+    BoundsDetails: 1
+    Position: {x: -0.13055894, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    Size: {x: 0.26111788, y: 0.26111788, z: 0.26111788}
+    BoneEffect: {fileID: 0}
+    BoneEffectDetails: 0
+    BoneEffectPosition: {x: 0, y: 0, z: 0}
+    BoneEffectRotation: {x: 0, y: 0, z: 0}
+    BoneEffectSize: {x: 0, y: 0, z: 0}
+    BoneParentEffect: {fileID: 0}
+    BoneParentEffectDetails: 0
+    BoneParentEffectPosition: {x: 0, y: 0, z: 0}
+    BoneParentEffectRotation: {x: 0, y: 0, z: 0}
+    BoneParentEffectSize: {x: 0, y: 0, z: 0}
+    color: {r: 0, g: 1, b: 1, a: 1}
+    SkinnedMeshes: []
+  - ShowWireframe: 1
+    ShowProperties: 1
+    Name: L_Upperarm
+    bone: {fileID: 364979691917206619}
+    BoundsDetails: 1
+    Position: {x: -0.011447664, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    Size: {x: 0.022895329, y: 0.011447664, z: 0.011447664}
+    BoneEffect: {fileID: 0}
+    BoneEffectDetails: 0
+    BoneEffectPosition: {x: 0, y: 0, z: 0}
+    BoneEffectRotation: {x: 0, y: 0, z: 0}
+    BoneEffectSize: {x: 0, y: 0, z: 0}
+    BoneParentEffect: {fileID: 0}
+    BoneParentEffectDetails: 0
+    BoneParentEffectPosition: {x: 0, y: 0, z: 0}
+    BoneParentEffectRotation: {x: 0, y: 0, z: 0}
+    BoneParentEffectSize: {x: 0, y: 0, z: 0}
+    color: {r: 0, g: 1, b: 0, a: 1}
+    SkinnedMeshes: []
+  - ShowWireframe: 1
+    ShowProperties: 1
+    Name: L_Forearm
+    bone: {fileID: 3202365697214006753}
+    BoundsDetails: 1
+    Position: {x: -0.027493116, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    Size: {x: 0.05498623, y: 0.021994492, z: 0.021994492}
+    BoneEffect: {fileID: 0}
+    BoneEffectDetails: 0
+    BoneEffectPosition: {x: 0, y: 0, z: 0}
+    BoneEffectRotation: {x: 0, y: 0, z: 0}
+    BoneEffectSize: {x: 0, y: 0, z: 0}
+    BoneParentEffect: {fileID: 0}
+    BoneParentEffectDetails: 0
+    BoneParentEffectPosition: {x: 0, y: 0, z: 0}
+    BoneParentEffectRotation: {x: 0, y: 0, z: 0}
+    BoneParentEffectSize: {x: 0, y: 0, z: 0}
+    color: {r: 0.26824522, g: 0, b: 1, a: 1}
+    SkinnedMeshes: []
+  - ShowWireframe: 1
+    ShowProperties: 1
+    Name: R_Upperarm
+    bone: {fileID: 2090516358791922656}
+    BoundsDetails: 1
+    Position: {x: -0.011438794, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    Size: {x: 0.022877589, y: 0.011438794, z: 0.011438794}
+    BoneEffect: {fileID: 0}
+    BoneEffectDetails: 0
+    BoneEffectPosition: {x: 0, y: 0, z: 0}
+    BoneEffectRotation: {x: 0, y: 0, z: 0}
+    BoneEffectSize: {x: 0, y: 0, z: 0}
+    BoneParentEffect: {fileID: 0}
+    BoneParentEffectDetails: 0
+    BoneParentEffectPosition: {x: 0, y: 0, z: 0}
+    BoneParentEffectRotation: {x: 0, y: 0, z: 0}
+    BoneParentEffectSize: {x: 0, y: 0, z: 0}
+    color: {r: 1, g: 0, b: 0, a: 1}
+    SkinnedMeshes: []
+  - ShowWireframe: 1
+    ShowProperties: 1
+    Name: R_Forearm
+    bone: {fileID: 918072181015217187}
+    BoundsDetails: 1
+    Position: {x: -0.027575787, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    Size: {x: 0.055151574, y: 0.02206063, z: 0.02206063}
+    BoneEffect: {fileID: 0}
+    BoneEffectDetails: 0
+    BoneEffectPosition: {x: 0, y: 0, z: 0}
+    BoneEffectRotation: {x: 0, y: 0, z: 0}
+    BoneEffectSize: {x: 0, y: 0, z: 0}
+    BoneParentEffect: {fileID: 0}
+    BoneParentEffectDetails: 0
+    BoneParentEffectPosition: {x: 0, y: 0, z: 0}
+    BoneParentEffectRotation: {x: 0, y: 0, z: 0}
+    BoneParentEffectSize: {x: 0, y: 0, z: 0}
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    SkinnedMeshes: []
+  SelectionMask: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  SelectionMaskLength: 686
+--- !u!114 &789120594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2156822707711109233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b118e647cbbc64a9183479e9bc59a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dismemberment: {fileID: 789120593}
+  _joints:
+  - {fileID: 1400530521}
+  - {fileID: 429944990}
+  - {fileID: 716195598}
+  - {fileID: 1250815425}
+  - {fileID: 912658265}
+  - {fileID: 1661301351}
+  - {fileID: 546310840}
+  - {fileID: 1542108779}
+  - {fileID: 981063210}
+  - {fileID: 974587941}
 --- !u!1 &2176710185889996752
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,7 +1499,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368302586149654427}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.013409933
   m_Height: 0.053639732
@@ -1658,6 +1925,7 @@ Transform:
   - {fileID: 6963791575708552390}
   - {fileID: 4990865370232580257}
   - {fileID: 547399919930332080}
+  - {fileID: 6189279048236296774}
   m_Father: {fileID: 3579868634544734175}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1862,7 +2130,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3820594292358141074}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.013419701
   m_Height: 0.053678803
@@ -2338,7 +2606,6 @@ Transform:
   - {fileID: 1598146559093835653}
   - {fileID: 9189882744259630193}
   - {fileID: 3717086867625078607}
-  - {fileID: 6189279048236296774}
   m_Father: {fileID: 1631783556746162891}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2494,7 +2761,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5679817481082276139}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.013930925
   m_Height: 0.046436414
@@ -3906,7 +4173,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9003646167703318092}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.0139306635
   m_Height: 0.046435542
