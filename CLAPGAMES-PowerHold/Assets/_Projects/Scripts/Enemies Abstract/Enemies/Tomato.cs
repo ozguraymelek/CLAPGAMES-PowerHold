@@ -95,7 +95,7 @@ public class Tomato : Enemy
 
     public override void OnEnter(Collider collider)
     {
-        if (collider.GetComponentInChildren<Sword>().interacted == true) return;
+        // if (collider.GetComponentInChildren<Sword>().interacted == true) return;
         
         if (collider.GetComponent<INVBehaviour>() != null)
         {

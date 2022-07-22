@@ -95,12 +95,12 @@ public class Hotdog : Enemy
 
     public override void OnEnter(Collider collider)
     {
-        if (collider.GetComponentInChildren<Sword>().interacted == true) return;
         
         if (collider.GetComponent<INVBehaviour>() != null)
         {
             print("Player !");
 
+            // if (collider.GetComponentInChildren<Sword>().interacted == true) return;
             ExploitPlayerLevel();
             invBehaviour.InteractWithEnemy();
             interacted = true;

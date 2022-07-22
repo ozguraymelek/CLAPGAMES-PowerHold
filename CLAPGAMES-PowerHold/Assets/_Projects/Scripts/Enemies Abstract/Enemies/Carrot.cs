@@ -98,11 +98,10 @@ public class Carrot : Enemy
         if (collider.GetComponent<INVBehaviour>() != null)
         {
             print("Player !");
-            if (collider.GetComponentInChildren<Sword>().interacted == true) return;
+            if (collider.GetComponentInChildren<Cut>().cuttedd == true) return;
             
             ExploitPlayerLevel();
             invBehaviour.InteractWithEnemy();
-            interacted = true;
         }
     }
 
@@ -150,7 +149,6 @@ public class Carrot : Enemy
     {
         OnEnemyInteractWithPlayer(other);
 
-        interacted = true;
     }
 
     private void OnTriggerStay(Collider other)

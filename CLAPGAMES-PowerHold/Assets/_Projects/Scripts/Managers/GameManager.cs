@@ -41,7 +41,7 @@ public class GameManager : Singleton<GameManager>
         invBehaviour.SetPlayer();
         invBehaviour.DeactivateAllWorldSpaceCanvas();
         invBehaviour.UnsubscribeMoveForward();
-        invBehaviour.DisableJSwordCollider();
+        // invBehaviour.DisableJSwordCollider();
         invBehaviour.DisablePlayerCollider();
         
         StartCoroutine(DelayPanelActivate(UIManager.Instance.failPanel));

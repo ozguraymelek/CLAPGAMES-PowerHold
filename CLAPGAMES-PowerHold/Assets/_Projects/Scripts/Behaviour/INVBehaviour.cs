@@ -15,7 +15,6 @@ public class INVBehaviour : MonoBehaviour
     [SerializeField] private Sword sword;
     
     [Header("Components")] [Space] private CapsuleCollider _capsuleCollider;
-    public BoxCollider cutterCollider;
     public Animator animator;
     public TMP_Text text_level;
     public TMP_Text text_PopUp;
@@ -65,8 +64,18 @@ public class INVBehaviour : MonoBehaviour
     private void OnPointerRemoved(Vector3 obj)
     {
         isPressing = false;
+
+        sword.boxCollider.enabled = false;
+
+        StartCoroutine(Delay());
     }
 
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(1f);
+        Sword.Instance.interacted = false;
+        Cut.Instance.cuttedd = false;
+    }
     private void OnPointerPressed(Vector3 obj)
     {
         isPressing = true;
@@ -90,6 +99,7 @@ public class INVBehaviour : MonoBehaviour
             if (attack.timer >= attack.attackRate)
             {
                 attack.PlayerAttack();
+                sword.boxCollider.enabled = true;
                 attack.timer = 0;
             }
         }
@@ -168,19 +178,16 @@ public class INVBehaviour : MonoBehaviour
     
     public void EnableSwordCollider()
     {
+        
+        print("2");
         sword.boxCollider.enabled = true;
     }
 
     public void DisableSwordCollider()
     {
+        print("1");
         sword.boxCollider.enabled = false;
-        
-        sword.interacted = false;
-    }
-
-    public void EnableCutterCollider()
-    {
-        cutterCollider.enabled = true;
+        // sword.interacted = false;
     }
     #endregion
     
@@ -419,7 +426,7 @@ public class INVBehaviour : MonoBehaviour
     {
         bool a = true;
         
-        sword.interacted = true;
+        // sword.interacted = true;
         
         animator.SetTrigger("Hitted");
         
@@ -431,7 +438,6 @@ public class INVBehaviour : MonoBehaviour
             {
                 StartCoroutine(Pushup(_initSpeed));
 
-                sword.interacted = false;
                 a = false;
             }
 

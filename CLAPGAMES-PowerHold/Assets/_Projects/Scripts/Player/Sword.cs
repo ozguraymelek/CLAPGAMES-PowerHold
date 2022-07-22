@@ -1,6 +1,6 @@
 using UnityEngine;
 using EzySlice;
-public class Sword : MonoBehaviour, IInteractible
+public class Sword : Singleton<Sword>, IInteractible
 {
     [Header("Scriptable Objects Reference")] [SerializeField]
     private PlayerSettings playerSettings;
@@ -13,7 +13,12 @@ public class Sword : MonoBehaviour, IInteractible
     
     [Header("Settings")] public bool interacted = false;
 
-
+    
+    [Header("Slice Settings")] [Space] public Material materialSlicedSide;
+    public float explosionForce;
+    public float explosionRadius;
+    public bool gravity, kinematic;
+    
     private void Start()
     {
         SubscribeEvents();
@@ -21,22 +26,24 @@ public class Sword : MonoBehaviour, IInteractible
 
     private void SubscribeEvents()
     {
-        INVEvents.OnSwordInteract += OnSwordInteractWithEnemy;
+        // INVEvents.OnSwordInteract += OnSwordInteractWithEnemy;
     }
     private void OnTriggerEnter(Collider other)
     {
-        FindObjectOfType<INVEvents>().OnSwordInteractWithEnemy(other);
+        // FindObjectOfType<INVEvents>().OnSwordInteractWithEnemy(other);
+        OnSwordInteractWithEnemy(other);
         
     }
 
     private void OnTriggerExit(Collider other)
     {
-        
+        OnExit(other);
     }
 
     public void OnSwordInteractWithEnemy(Collider collider)
     {
         OnEnter(collider);
+        
     }
 
     
@@ -45,11 +52,15 @@ public class Sword : MonoBehaviour, IInteractible
     public void OnEnter(Collider other)
     {
         if (interacted == true) return;
-
-        if (other.GetComponent<IEnemy>() != null)
+        
+        if (other.gameObject.layer == LayerMask.NameToLayer("Cuttable"))
         {
-            print("Enemy!");
-            invBehaviour.ExploitEnemyLevel(other.GetComponent<Enemy>());
+            print("ttT");
+            other.transform.parent = null;
+            Cut.Instance._material = other.GetComponent<MeshRenderer>().material;
+            Cut.Instance.willCutObj = other.gameObject;
+            Cut.Instance.Slice();
+
             interacted = true;
         }
     }
@@ -59,10 +70,12 @@ public class Sword : MonoBehaviour, IInteractible
         
     }
 
-    public void OnExit(Collider collider)
+    public void OnExit(Collider other)
     {
-        
+        Cut.Instance.cuttedd = false;
     }
     
     #endregion
+    
+    
 }
